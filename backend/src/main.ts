@@ -1,12 +1,19 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
-async function bootstrap() {
+// We export the handler so Vercel's Node runtime can call it
+export default async (req: any, res: any) => {
   const app = await NestFactory.create(AppModule);
-  app.enableCors();
-  await app.init();
-  return app.getHttpAdapter().getInstance(); // This is the magic line for Vercel
-}
+  
+  app.enableCors({
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  });
 
-// Export the promise for Vercel
-export const handler = bootstrap();
+  await app.init();
+  
+  // This directs Vercel's internal server to the NestJS instance
+  const instance = app.getHttpAdapter().getInstance();
+  return instance(req, res);
+};
