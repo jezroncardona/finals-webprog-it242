@@ -28,14 +28,12 @@ function BulletinBoard() {
 
   return (
     <div>
-      {posts.length > 0}
-      ? {posts.map((post) => (
+      {posts.map((post) => (
         <div key = {post.id}>
           <p>{functions.formatDate(post.created_at)}</p>
           <p>{post.name}: {post.content}</p>
         </div>
       ))}
-      : <p>No posts found</p>
     </div>
   );
 
