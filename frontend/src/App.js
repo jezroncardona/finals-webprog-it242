@@ -8,7 +8,8 @@ function BulletinBoard() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/app`);
+        const baseUrl = process.env.REACT_APP_API_URL.replace(/\/$/, ""); // Removes any trailing slash
+        const response = await axios.get(`${baseUrl}/app`);
         setPosts (response.data);
       } catch (error) {
         console.error("Error fetching posts: ", error);
