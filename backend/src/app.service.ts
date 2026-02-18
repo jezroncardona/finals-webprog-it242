@@ -17,7 +17,7 @@ export class AppService {
   async getPostData() {
     const { data, error } = await this.supabase
       .schema('webprog_stuff')
-      .from('guestbook') 
+      .from('board_post') 
       .select('*');
 
     if (error) throw error;
