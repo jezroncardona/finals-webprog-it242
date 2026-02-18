@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
+import * as utils from './functions.js';
 import axios from 'axios';
 
+//the actual app display
 function BulletinBoard() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -20,13 +22,14 @@ function BulletinBoard() {
     fetchPosts();
   }, []);
 
-
   if (loading) return <p>Loading the board...</p>;
+
+
 
   return (
       posts.map((post) => (
         <div key ={post.id}>
-          <p>{post.created_at}</p>
+          <p>{utils.formatDate(post.created_at)}</p>
           <p>{post.name}: {post.content}</p>
         </div>
       )
@@ -35,3 +38,4 @@ function BulletinBoard() {
 
 }
 export default BulletinBoard;
+
