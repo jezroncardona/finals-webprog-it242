@@ -11,11 +11,12 @@ export class AppmoduleService {
     const url = this.configService.get<string>('SUPABASE_URL') as string;
     const key = this.configService.get<string>('SUPABASE_KEY') as string;
     
-    this.supabase = createClient(url, key);
+    this.supabase = createClient(url, key,);
   }
 
-  async getAllStudyData() {
+  async getPostData() {
     const { data, error } = await this.supabase
+      .schema('webprog_stuff')
       .from('guestbook') 
       .select('*');
 
