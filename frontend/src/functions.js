@@ -1,5 +1,8 @@
 //functions
 const formatDate = (timestamp) => {
-  if(!timestamp) return "";
-  return new Date(timestamp).toLocaleString()
+    return new Date(timestamp).toLocaleDateString();
+};
+
+const formatTime = (timestamp) => {
+    return new Date(timestamp).toLocaleTimeString();
 };
