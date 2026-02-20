@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import './App.css';
 
-import PostCards from './components/Post';
+import PostCards from './components/PostCards';
 
 //the actual app display
 function BulletinBoard() {
