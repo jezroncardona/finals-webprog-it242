@@ -31,7 +31,7 @@ function BulletinBoard() {
 
   return (
     <div>
-      <PostCards posts={posts} />
+      <PostCards posts={posts}/>
     </div>
   );
 
