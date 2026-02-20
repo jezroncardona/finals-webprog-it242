@@ -5,6 +5,7 @@ import {baseUrl} from './config';
 import {supabase} from './config';
 import './App.css';
 import PostCards from './components/PostCards';
+import BulletinForm from './components/BulletinForm';
 
 function BulletinBoard() {
   const [posts, setPosts] = useState([]);
